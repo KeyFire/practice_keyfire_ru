@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+Это страница про шаблоны.
+{% comment %}
+Это комментарий
+{% endcomment %}
+{% for post in posts %}
+{{ post.content|safe }}
+{% endfor %}
+{% endblock %}

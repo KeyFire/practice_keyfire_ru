@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+    <small>
+        <ol class="breadcrumb">
+            <li><a href="../../constructors">Бизнес-Конструкторы</a></li>
+            <li class="active"><a href="../../constructor/{{ item.id }}">{{ item.title }}</a></li>
+        </ol>
+    </small>
+    <h3>{{ item.title }}</h3>
+    <ul id="myTabs" class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#body" id="body-tab" role="tab" data-toggle="tab"
+                                                  aria-controls="body" aria-expanded="true">Описание</a></li>
+        <li role="presentation" class=""><a href="#examples" id="examples-tab" role="tab" data-toggle="tab"
+                                            aria-controls="examples" aria-expanded="false">Примеры</a></li>
+        <li role="presentation" class=""><a href="#structure" id="structure-tab" role="tab" data-toggle="tab"
+                                            aria-controls="structure">Состав</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        <div role="tabpanel" class="tab-pane fade active in" id="body" aria-labelledby="body-tab">
+            <p>
+                {{ item.body_html|safe }}
+            </p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="examples" aria-labelledby="examples-tab">
+            <p>
+                {{ item.examples_html|safe }}
+            </p>
+        </div>
+        <div role="tabpanel" class="tab-pane fade" id="structure" aria-labelledby="structure-tab">
+            <p>
+                {% load mptt_tags %}
+                {% load bootstrap3 %}
+            <ul>
+                {% recursetree nodes %}
+                    {% if node.is_folder %}
+                        <span style="color: #ffa500"> {% bootstrap_icon "folder-open" %} </span>
+                    {% else %}
+                        <span style="color: #006dcc"> {% bootstrap_icon "minus" %} </span>
+                    {% endif %}&nbsp;{{ node.title|safe }}<br>
+                    {% if not node.is_leaf_node %}
+                        <ul class="children">
+                            {{ children }}
+                        </ul>
+                    {% endif %}
+                {% endrecursetree %}
+            </ul>
+            </p>
+        </div>
+    </div>
+    Источник <a href="http://nerabota.ru">http://nerabota.ru</a>
+    {% include "social.html" %}
+{% endblock %}

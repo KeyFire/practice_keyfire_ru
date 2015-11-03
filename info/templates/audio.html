@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+Это страница аудиозаписей с использованием базы данных.<br><br>
+{% comment %}
+Это комментарий
+{% endcomment %}
+<table>
+{% for audio in audios %}
+<tr>
+<td>{{ audio.title }}&nbsp;</td><td><audio src="{{ audio.description }}" controls="controls"></audio></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

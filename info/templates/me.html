@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block content %}
+    <div class="media">
+        <div class="media-body">
+            Зачем я сюда пришел:
+            <ul>
+                <li>Изучить новые языки программирования на практике</li>
+                <li>Быть более уверенным в себе</li>
+                <li>Научиться продавать</li>
+                <li>Рассказать о себе</li>
+                <li>Узнать что то новенькое</li>
+            </ul>
+            Зачем я начал изучать Python и Django:<br>
+            <ul>
+                <li>Чтобы быстро овладеть новым инструментом,</li>
+                <li>Чтобы иметь возможность создать независимый продукт,</li>
+                <li>чтобы быть уверенней в своих силах и иметь больше возможностей выразить себя,</li>
+                <li>чтобы привлечь деньги своими силами,</li>
+                <li>создать и владеть механизмом получения денег без собственного участия.</li>
+            </ul>
+            Это первоначальная цель. После ее достижения будем ставить новые.<br><br>
+            <strong>Если мои цели, похожи на Ваши, советую изучить к Python + Django + Продажи в&nbsp;
+                <span class='spanlink' onclick="GoTo('_glopages.ru/affiliate/5952159')">нашей школе.</span></strong><br>
+            <br>Обратная связь:
+            <ul>
+                <li>{% bootstrap_icon "envelope" %} keysfire@gmail.com</li>
+                <li>{% bootstrap_icon "thumbs-up" %} <a href="https://www.facebook.com/KeyFire1984">https://www.facebook.com/KeyFire1984</a>
+                </li>
+            </ul>
+        </div>
+        <div class="media-right media-top">
+            <img class="pull-right media-top" src="/static/img/keyfire.png" alt="Михаил Попов"/>
+        </div>
+    </div>
+{% endblock %}

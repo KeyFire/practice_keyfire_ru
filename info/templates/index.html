@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+ <style>
+ .jumbotron {
+     background-image: url("{%static "img/splash-django-blur.png" %}");
+     background-position: center, center; background-repeat: no-repeat;
+     background-color: #fffffe;
+ }
+ </style>
+ <div class="jumbotron">
+  <div align="center">
+   <div class="container">
+    <h1>Сделай Сам Свой Сайт!</h1>
+    <h3>Используй инструменты <span style="color:red">Я</span>ндекс и Mail.ru</h3>
+    <h2><strong>Жми</strong> быстрее на кнопку</h2>
+    <p>и пройди обучение</p>
+    <p></p>
+    <h1>{% bootstrap_icon "arrow-down" %}</h1>
+    <p>{% bootstrap_button "Начать обучение в школе<br>(эй, сегодня у тебя получится)" button_class="btn-danger btn-lg" href="http://glopages.ru/affiliate/5952159" %}</p>
+   </div>
+  </div>
+ </div>
+{% endblock %}

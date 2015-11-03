@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div>
+        <p><h3>{{ article.title }}</h3>
+    <small>Автор: <ins>Михаил Попов</ins> / Дата: <ins>{{ article.add_date|date:"d.m.Y" }}</ins> в <ins>{{ article.add_date|time:"H:i" }}</ins> / Тэги: <ins>{{ article.tags.all|join:", " }}</ins></small></p>
+        {{ article.body|safe }}
+    <p>
+    {% include "social.html" %}
+    </p>
+        <br></div>
+    {% include "disqus.html" %}
+{% endblock %}

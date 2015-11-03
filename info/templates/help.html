@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+Практикум по работе моделями.<br>
+Включает уроки 14 и 33 плана 1.<br>
+Описание выполнения уроков смотри на закладке <strong>Код</strong>.<br>
+<h4>Вывод всех записей:</h4>
+<table class="table table-bordered">
+    <tr><th>Номер</th><th>Тема</th><th>Тип обращения</th><th>Описание</th><th>Дата добавления</th></tr>
+{% for incident in incidents %}
+    <tr><td>{{ incident.number }}</td><td>{{ incident.subject }}</td><td>{{ incident.get_type_display }}</td>
+    <td>{{ incident.description }}</td><td>{{ incident.date }}</td></tr>
+{% endfor %}
+</table>
+<h4>Последние 2 записи:</h4>
+<table class="table table-bordered">
+{% for last in last2 %}
+    <tr><td>{{ last.number }}</td><td>{{ last.subject }}</td><td>{{ last.get_type_display }}</td>
+    <td>{{ last.description }}</td><td>{{ last.date }}</td></tr>
+{% endfor %}
+</table>
+<h4>Только одна запись по Id=2:</h4>
+<table class="table table-bordered">
+    <tr><td>{{ record2.number }}</td><td>{{ record2.subject }}</td><td>{{ record2.get_type_display }}</td>
+    <td>{{ record2.description }}</td><td>{{ record2.date }}</td></tr>
+</table>
+{% endblock %}
+

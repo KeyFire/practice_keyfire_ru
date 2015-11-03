@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load my_filters %}
+
+{% block content %}
+Ссылка на эти страницы задается регулярным выражением.<br>
+Также ниже используется пагинатор.<br>
+<div class="alert alert-warning" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  Не заигрывайтесь. Все страницы одинаковые, меняется только заголовок и данные пагинатора.
+</div><br>  
+Страницы:<br>
+
+<nav>
+  <ul class="pagination">
+    <li><a href="../{{ paginator.prev_pg }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+{% for i in 5|create_range:paginator.pg_from  %}
+    <li class="{% if i == paginator.pg_num %}active{% endif %}">
+        <a href="../{{ i }}">{{ i }}{% if i == paginator.pg_num %}<span class="sr-only">(current)</span>{% endif %}</a>
+    </li>
+{% endfor %}
+    <li><a href="../{{ paginator.next_pg }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+  </ul>
+</nav>
+{% endblock %}

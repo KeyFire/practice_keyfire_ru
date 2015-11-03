@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<style type="text/css">.press {color:#008080;}</style>
+<h1>{{ press.title }}</h1>
+<p class="press"> Автор: {{ press.author }}<br>
+Дата: {{ press.pub_date|date:"d.m.Y" }} {{ press.pub_date|time:"H:i" }}</p>
+{{ press.body }}
+{% endblock %}

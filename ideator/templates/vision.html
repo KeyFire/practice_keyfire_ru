@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block content %}
+<div id="carousel-generic" class="carousel slide" data-ride="carousel" data-interval="20000">
+  <ol class="carousel-indicators">
+  {% for visual in visuals %}
+    <li data-target="#carousel-generic" data-slide-to="{{ visual.index }}" {% ifequal visual.index 0 %}class="active"{% endifequal %}></li>
+  {% endfor %}
+  </ol>
+  <div class="carousel-inner" role="listbox">
+  {% for visual in visuals %}
+    <div class="item{% ifequal visual.index 0 %} active{% endifequal %}" style="background-color:#000;">
+      <img style="opacity:0.6; -moz-opacity:0.6; -khtml-opacity: 0.6; -webkit-filter: blur(3px); filter: blur(3px); -webkit-transition: 1s -webkit-filter linear; transition: 1s filter linear;" src="/static/img/{{ visual.img }}" alt="{{ visual.alt }}">
+      <div class="carousel-caption">
+          <h3> {{ visual.title }}</h3>
+          <p> {{ visual.body }}</p>
+      </div>
+    </div>
+  {% endfor %}
+  </div>
+
+  <a class="left carousel-control" href="#carousel-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Сюда</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Туда</span>
+  </a>
+</div>
+<br>
+<p><a href="https://groups.google.com/forum/embed/?place=forum/spb-tut&showsearch=true&showpopout=true&showtabs=false&parenturl=http%3A%2F%2Fspb-tut.ru%2Finfo%2Fgroup%2F#!category-topic/spb-tut/%D0%BB%D1%83%D1%87%D1%88%D0%B8%D0%B5-%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B8-django/mF91UX-WI9g">{% bootstrap_icon "link" %} Как это сделать?</a> - только для пользователей 
+<span class='spanlink' onclick="GoTo('_glopages.ru/affiliate/5952159')">spb-tut.ru</span>
+
+{% endblock %}

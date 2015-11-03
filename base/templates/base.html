@@ -1,0 +1,84 @@
+{% include 'header.html' %}
+{% load bootstrap3 %}
+<div class="container bs-docs-container">
+    <div class="col-md-9" role="main">
+        {% if title != Nome %}
+            <h2>{{ title }}
+                {% if task.new %}
+                    <small><span class="label label-danger">Новое</span></small>{% endif %}
+                {% if task.updated %}
+                    <small><span class="label label-warning">Обновлено</span></small>{% endif %} </h2>
+        {% endif %}
+        {% if task.show_solution %}
+            <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#example" id="example-tab" role="tab" data-toggle="tab"
+                                                          aria-controls="example"
+                                                          aria-expanded="true">{% bootstrap_icon "blackboard" %}
+                    Пример</a></li>
+                <li role="presentation" class=""><a href="#code" id="code-tab" role="tab" data-toggle="tab"
+                                                    aria-controls="code"
+                                                    aria-expanded="false">{% bootstrap_icon "file" %} Код</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="example" aria-labelledby="example-tab">
+            <br>
+        {% endif %}
+        {% block content %}{% endblock %}
+        {% if task.show_solution %}
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="code" aria-labelledby="code-tab">
+                <style>code {
+                    background-color: #ffffff;
+                }</style>
+                {% for section in task_sections %}
+                    {% if section.collapsed %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="heading-{{ section.id }}">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" href="#collapse-{{ section.id }}"
+                                       aria-controls="collapse-{{ section.id }}" class="collapsed">
+                                        {{ section.title }}
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse-{{ section.id }}" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="heading-{{ section.id }}">
+                                <div class="panel-body">
+                                    {% if section.section_type == 'CodePython' %}
+                                        <pre><code class="python">{{ section.description }}</code></pre>
+                                    {% elif section.section_type == 'CodeHTML' %}
+                                        <pre><code class="html">{{ section.description }}</code></pre>
+                                    {% else %}
+                                        {{ section.description|safe }}
+                                    {% endif %}
+                                    {% if section.annotation != "" %}
+                                        {{ section.annotation_HTML|safe }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <h4>{{ section.title }}</h4>
+                        {% if section.section_type == 'CodePython' %}
+                            <pre><code class="python">{{ section.description }}</code></pre>
+                        {% elif section.section_type == 'CodeHTML' %}
+                            <pre><code class="html">{{ section.description }}</code></pre>
+                        {% else %}
+                            {{ section.description|safe }}
+                        {% endif %}
+                        {% if section.annotation != "" %}
+                            {{ section.annotation_HTML|safe }}
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+            </div>
+        {% endif %}
+        {% if task.social %}
+            {% include "social.html" %}<br>
+        {% endif %}
+        {% if task.disqus %}{% include "disqus.html" %} {% endif %}
+    </div>
+    {% include 'menu.html' %}
+</div>
+{% include 'footer.html' %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    Это страница видеозаписей с использованием базы данных.
+    {% for video in videos %}
+        <div class="media">
+            <div class="media-left media-top">
+                <a href="#" data-toggle="modal" data-target="#video{{ video.id }}">
+                    <img class="media-object" src="{{ video.thumbnail }}" alt="{{ video.title }}">
+                </a>
+            </div>
+            <div class="media-body">
+                <a href="#" data-toggle="modal" data-target="#video{{ video.id }}">
+                    <h4 class="media-heading">{{ video.title }}
+                        <small> добавлено: {{ video.date }}</small>
+                    </h4>
+                </a>
+                {{ video.description|safe }}
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="video{{ video.id }}" tabindex="-1" role="dialog"
+             aria-labelledby="video{{ video.id }}Label">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="video{{ video.id }}Label">{{ video.title }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe id="videoframe{{ video.id }}" data-src="{{ video.video_url }}" width="560" height="315"
+                                src="{{ video.video_url }}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            videoframe{{ video.id }} = $("#videoframe{{ video.id }}");
+            $('#video{{ video.id }}').on('hide.bs.modal', function (e) {
+                videoframe{{ video.id }}.attr("src", "about:blank")
+            });
+            $('#video{{ video.id }}').on('hidden.bs.modal', function (e) {
+                videoframe{{ video.id }}.attr("src", videoframe{{ video.id }}.data("src"))
+            });
+        </script>
+        <!-- End Modal -->
+    {% endfor %}
+{% endblock %}

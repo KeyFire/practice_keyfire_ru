@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<small><ol class="breadcrumb">
+  <li class="active"><a href="../constructors">Бизнес-Конструкторы</a></li>
+</ol></small>
+<div class="panel panel-default">
+<div class="panel-heading">Бизнес-конструкторы <span class="label label-danger">в разработке</span></div>
+<div class="panel-body">
+    <p>При помощи бизнес-конструктора можно собрать свою собственную бизнес-идею, посчитать, сколько она будет стоить, оценить реальность или не реальность и начать воплощать в жизнь, или убрать в стол до поры до времени.
+    <br>Бизнес-конструктор проведет по шагам:
+        <ul><li>от задумки идеи</li> 
+        <li>через рассчет строимости</li>
+        <li>и анализ через шаблон пригодности</li>
+        <li>до конкретных этапов и сроков</li></ul></p>
+</div>
+
+<ul class="list-group"  >
+{% for item in constructors %}
+<a class="list-group-item" type="button" data-toggle="tooltip" data-placement="bottom" title="{{ item.tooltip }}" href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+{% endfor %}
+</ul>
+</div>
+<script>$(function () {$('[data-toggle="tooltip"]').tooltip()})</script>
+<small>Источник <a href="http://nerabota.ru">http://nerabota.ru</a></small>
+{% endblock %}

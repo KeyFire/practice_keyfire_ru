@@ -1,0 +1,56 @@
+{% load bootstrap3 %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="практика python, практика django, django на практике, spb-tut, практикум на питоне, практикум на джанго, уроки django, создание сайта на django, создание сайта на python django">
+    <meta name="google-site-verification" content="P_XkRA5MPfm8E23Pk1iatbtZHFo0pVCguKeie_R5MNQ" />
+    <meta property="og:image" content="https://pbs.twimg.com/profile_images/646297527189241856/_u8gcu-j_200x200.jpg">
+    <meta name="twitter:site" content="@KeyFire" />
+    <meta name="twitter:image" property="og:image" content="https://pbs.twimg.com/profile_images/646297527189241856/_u8gcu-j_200x200.jpg" />    <link rel="author" href="https://plus.google.com/+MikhailPopovRu">
+    <link rel="publisher" href="https://plus.google.com/+MikhailPopovRu">
+    <link rel="shortcut icon" href="{% static "img/favicon.png" %}" type="image/png">
+    <link href="{%static "highlight/styles/idea.css"%}" rel="stylesheet" media="all"/>
+    <link href="{%static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{%static "css/base.css" %}" rel="stylesheet">
+    <link href="{%static "fonts/bitter.css" %}" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.knob.min.js"%}"></script>
+    <script type="text/javascript" src="{% static "js/base.js"%}"></script>
+    {% include "yandexmetrics.html" %}
+    {% include "googleanalytics.html" %}
+    <title>
+        {% if title != None or tab_title != "" %}
+            {% if tab_title == "" %}{{ title }}{% else %}{{ tab_title }}{% endif %} -
+        {% endif %} Практика Python + Django</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><span style="color:red">{% bootstrap_icon "fire" %}</span>&nbsp;&nbsp;Практика Python + Django</a>
+    </div>
+     <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+    <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="/blog/">БЛОГ</a></li> -->
+        <li><a><span style="color:#0066cc">{% bootstrap_icon "education" %}</span>&nbsp;&nbsp;<span class="spanlink" onclick="GoTo('_glopages.ru/affiliate/5952159')">Школа Python + Django<span class="hidden-xs hidden-sm"> на spb-tut.ru</span></span></a></li>
+        <li><a href="/feed/" data-toggle="menu-tooltip" data-placement="bottom" title="RSS лента"><img alt="RSS лента" src="{% static "rss.svg" %}" style="height:16px; width:16px"/></a></li>
+        <li class="dropdown visible-xs visible-sm">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Выполнение<span class="caret"></span></a>
+          {{ dropdown_menu|safe }}
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<script>$(function () {$('[data-toggle="menu-tooltip"]').tooltip()})</script>

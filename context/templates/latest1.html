@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<hr>
+{% if user.is_anonymous %}
+Вы не вошли в кабинет
+{% else %}
+Вы вошли как: {{ user.email }}
+{% endif %}
+<hr>
+<h1>{{ press.title }}</h1>
+<p>
+    Дата: {{ press.pub_date }}<br>
+    Автор: {{ press.author }}<br>
+    <a href="{{ press.get_absolute_url }}">Перейти посмотреть...</a><br>
+</p>
+</h1>
+<hr>
+Ваш IP адрес: {{ my_ip_address }}<hr>
+{% endblock %}
