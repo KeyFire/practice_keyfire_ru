@@ -1,5 +1,6 @@
 # coding: utf-8
 import os
+
 import local_settings
 
 BASE_DIR = local_settings.BASE_DIR
