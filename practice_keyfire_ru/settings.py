@@ -23,7 +23,7 @@ page_title = 'Практика Python + Django'
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'c#6*5%9a6rpi($au&gwp#142f$w*6c0bz1+#dz&!1f%$+sw1kq'
+SECRET_KEY = local_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = local_settings.DEBUG
