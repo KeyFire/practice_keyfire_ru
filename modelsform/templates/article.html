@@ -2,8 +2,6 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
 {% block content %}
-    <br>
-    Код можно посмотреть на github.com
 <form action="/model/" method="POST">
     {% csrf_token %}
     {% bootstrap_form form %}
