@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'ideator',
     'info',
     'myforms',
-    'blog'
+    'blog',
+    'modelsform',
 )
 
 MIDDLEWARE_CLASSES = (

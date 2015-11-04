@@ -18,8 +18,8 @@ urlpatterns = [
     url(r'^blog/', include('blog.urls', namespace='blog')),
     url(r'^pages/(\d{1,3})/$', pages),
     url(r'^feed/$', feed.LatestPosts(), name="feed"),
-    url(r'^$', index)
-
+    url(r'^$', index),
+    url(r'^model/', include('modelsform.urls')),
 ]
 
 if settings.DEBUG:
