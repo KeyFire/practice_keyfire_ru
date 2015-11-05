@@ -37,7 +37,7 @@ def menu():
     first_block = True
     for lesson in lessons:
         if not first_block:
-            menu_text.append(u'\n<hr>')
+            menu_text.append(u'\n')
         if lesson.ref == "":
             menu_text.append(u'\n<h4>{0}'.format(lesson.title))
         else:
@@ -52,7 +52,7 @@ def menu():
         tasks = Task.objects.filter(lesson_id=lesson)
         first_block = False
         for task in tasks:
-            menu_text.append(u'\n<a href="{0}">{1}</a>'.format(task.ref, task.title))
+            menu_text.append(u'\n&nbsp;&nbsp;&nbsp;<a href="{0}">{1}</a>'.format(task.ref, task.title))
             if task.new:
                 menu_text.append(u' <span class="label label-danger">Новый</span>')
             elif task.updated:

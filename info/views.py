@@ -21,7 +21,7 @@ def work(request): # Мои работы
 
 def project(request): # О Проекте
     total = 60
-    finished = 47.0
+    finished = 48.0
     progress = int(round(finished/total*100,0))
     return render_to_response('project.html',
                               {'progress': progress, 'finished': int(finished), 'total': total},
