@@ -99,7 +99,7 @@ def press_list(request):
 
 
 def my_template(request):
-    return render_to_response("my_template.html")
+    return render_to_response("my_template.html", context_instance=RequestContext(request))
 
 def addtest():
     return {'1': 'Вася','2': 'Петя', 'cp':[1,2,3,4]}
