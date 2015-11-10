@@ -1,10 +1,10 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% block content %}
 <hr>
 {% if user.is_anonymous %}
 Вы не вошли в кабинет
 {% else %}
-Вы вошли как: {{ user.email }}
+Вы вошли как: {{ user.first_name }}
 {% endif %}
 <hr>
 <h1>{{ press.title }}</h1>

@@ -1,5 +1,6 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -15,7 +16,7 @@
     <link href="{%static "css/bootstrap.min.css" %}" rel="stylesheet">
     <link href="{%static "css/base.css" %}" rel="stylesheet">
     <link href="{%static "fonts/bitter.css" %}" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{%static "css/font-awesome.min.css" %}" rel="stylesheet">
     <link href="/feed/" rel="alternate" title="Блог Михаила Попова" type="application/atom+xml">
     <script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
     <script type="text/javascript" src="{% static "js/jquery.knob.min.js"%}"></script>
@@ -44,12 +45,21 @@
     <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
         <!-- <li><a href="/blog/">БЛОГ</a></li> -->
-        <li><a><span style="color:#0066cc">{% bootstrap_icon "education" %}</span>&nbsp;&nbsp;<span class="spanlink" onclick="GoTo('_glopages.ru/affiliate/5952159')">Школа Python + Django<span class="hidden-xs hidden-sm"> на spb-tut.ru</span></span></a></li>
+        <li><a><span style="color:#0066cc"><i class="fa fa-graduation-cap"></i></span>&nbsp;&nbsp;<span class="spanlink" onclick="GoTo('_glopages.ru/affiliate/5952159')">Школа Python + Django<span class="hidden-xs hidden-sm"> на spb-tut.ru</span></span></a></li>
         <li><a href="/feed/" data-toggle="menu-tooltip" data-placement="bottom" title="RSS лента"><img alt="RSS лента" src="{% static "rss.svg" %}" style="height:16px; width:16px"/></a></li>
         <li class="dropdown visible-xs visible-sm">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Выполнение<span class="caret"></span></a>
           {{ dropdown_menu|safe }}
         </li>
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Войти<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+        <li><a href="{% provider_login_url "facebook" method="oauth2" next="/" %}"><i style="color:#3b5998;" class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
+        <li><a href="{% provider_login_url "google" method="oauth2" next="/" %}"><i style="color:#dd4b39;" class="fa fa-google-plus-square fa-lg"></i> Google+</a></li>
+        <li><a href="{% provider_login_url "twitter" method="oauth2" next="/" %}"><i style="color:#00aced;" class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
+        <li><a href="{% provider_login_url "linkedin" method="oauth2" next="/" %}"><i style="color:#007bb5;" class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
+        <li><a href="{% provider_login_url "vk" method="oauth2" next="/" %}"><i style="color:#45668e;" class="fa fa-vk fa-lg"></i> ВКонтакте</a></li>
+        </ul></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

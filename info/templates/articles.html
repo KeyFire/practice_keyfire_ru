@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% block content %}
 {% for article in articles %}
     <div><h3>{{ article.title }} <small>{{ article.date|date:"d.m.Y" }} {{ article.date|time:"H:i" }}</small></h3>

@@ -21,6 +21,15 @@ ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
 
 INSTALLED_APPS = (
     'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.vk',
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -29,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_markdown',
     'debug_toolbar',
+
     'mptt',
     'ckeditor',
     'ckeditor_uploader',
@@ -139,9 +149,45 @@ TEMPLATES = [
     },
 ]
 
+# allauth
+# http://django-allauth.readthedocs.org/en/latest/installation.html#django
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+# SITE_ID = 1
+
+# End allauth
+
+
 # ckeditor
 # https://pypi.python.org/pypi/django-ckeditor-updated
 
+CKEDITOR_CONFIGS = {
+    "default": {
+        'skin': 'moonocolor',
+        "removePlugins": "stylesheetparser",
+        'allowedContent': True,
+        'toolbar_Full': [
+        ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ],
+        ['Image', 'Flash',  'Table', 'HorizontalRule'],
+        ['TextColor', 'BGColor'],
+        ['Smiley','sourcearea', 'SpecialChar'],
+        [ 'Link', 'Unlink', 'Anchor' ],
+        [ 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language' ],
+        [ 'Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates' ],
+        [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ],
+        [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ],
+        [ 'Maximize', 'ShowBlocks' ]
+    ],
+    }
+}
+
+"""
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
@@ -161,7 +207,7 @@ CKEDITOR_CONFIGS = {
                        'Language']},
             {'name': 'links', 'items': ['Link', 'Unlink', 'Anchor']},
             {'name': 'insert',
-             'items': ['Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
+             'items': ['Image', 'Flash', 'Youtube', ['FontAwesome', 'Source'], 'Glyphicons', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe']},
             '/',
             {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
@@ -200,10 +246,21 @@ CKEDITOR_CONFIGS = {
             ]),
     }
 }
-
+"""
 CKEDITOR_UPLOAD_PATH = "uploads/"  # папка загрузки
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'  # библиотека JQUERY
 CKEDITOR_IMAGE_BACKEND = "pillow"  # обрабатывать изображения при помощи pillow
-
-
 # End ckeditor
+
+SOCIALACCOUNT_PROVIDERS = \
+    {'linkedin':
+      {'SCOPE': ['r_emailaddress'],
+       'PROFILE_FIELDS': ['id',
+                         'first-name',
+                         'last-name',
+                         'email-address',
+                         'picture-url',
+                         'public-profile-url']}
+     }
+
+ACCOUNT_LOGIN_REDIRECT_URL = '/'

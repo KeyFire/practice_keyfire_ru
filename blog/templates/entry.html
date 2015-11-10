@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% block content %}
 {% load bootstrap3 %}
 <div><table>
 {% for object in articles %}
     <tr><td><div class="post"><p><h3><a href="{% url 'blog:one_article_by_slug' object.slug %}">{{ object.title }}</a></h3>
-    <small>Автор: <ins>Михаил Попов</ins> / Дата: <ins>{{ object.add_date|date:"d.m.Y" }}</ins> в <ins>{{ object.add_date|time:"H:i" }}</ins> / Тэги: <ins>{{ object.tags.all|join:", " }}</ins></small></p>
-    {{ object.subtitle|safe }} <a class="btn btn-default btn-xs" type="button" href="{% url 'blog:one_article_by_slug' object.slug %}">Читать полностью &gt;&gt;&gt;</a></div></td></tr>
+    <small>Автор: <ins>Михаил Попов</ins> / <i class="fa fa-calendar-o"></i> <ins>{{ object.add_date|date:"d.m.Y" }}</ins> <i class="fa fa-clock-o"></i> <ins>{{ object.add_date|time:"H:i" }}</ins> / <i class="fa fa-tags"></i> <ins>{{ object.tags.all|join:", " }}</ins></small></p>
+    {{ object.subtitle|safe }} <a class="btn btn-default btn-xs" type="button" href="{% url 'blog:one_article_by_slug' object.slug %}">Читать полностью <i class="fa fa-angle-double-right"></i></a></div></td></tr>
 {% endfor %}
 </table></div>
 {% endblock %}

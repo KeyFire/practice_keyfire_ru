@@ -1,5 +1,5 @@
 # coding: utf-8
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render, render_to_response, RequestContext
 from django.http import HttpResponseRedirect
 from models import Article
 from forms import ArticleForm
@@ -15,7 +15,10 @@ def article_name(request):
     else:
         form = ArticleForm()
 
-    return render(request, 'article.html', {'form': form})
+    objects = Article.objects.all()
+
+    return render(request, 'article.html', {'form': form, 'objects': objects})
+
 
 def article_redirect(request):
-    return render_to_response('redirect.html')
+    return render_to_response('redirect.html',context_instance=RequestContext(request))

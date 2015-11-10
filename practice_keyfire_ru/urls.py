@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^feed/$', feed.LatestPosts(), name="feed"),
     url(r'^$', index),
     url(r'^model/', include('modelsform.urls')),
+    url(r'^accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:

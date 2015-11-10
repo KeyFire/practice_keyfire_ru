@@ -1,6 +1,7 @@
 # coding: utf-8
 from django.db import models
 
+
 class Article(models.Model):
     class Meta:
         db_table = 'app_modelsform_article'
