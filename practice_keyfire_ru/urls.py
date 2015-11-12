@@ -21,6 +21,7 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^model/', include('modelsform.urls')),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'^auth/', include('loginsite.urls', namespace='auth')),
 ]
 
 if settings.DEBUG:

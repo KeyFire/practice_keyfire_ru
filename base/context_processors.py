@@ -1,7 +1,9 @@
 # coding: utf-8
+from django.contrib import auth
 
 from models import Lesson, Task, TaskSolutionSection
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
 
 
 def dropdown_menu():
@@ -64,7 +66,7 @@ def menu():
 def base(request):
     path = request.META['PATH_INFO']
     try:
-        task = Task.objects.get(ref=request.META['PATH_INFO'])
+        task = Task.objects.get(ref=path)
     except:
         task = {}
     if task != {}:
@@ -75,6 +77,11 @@ def base(request):
         task_sections = ()
         title = None
         tab_title = ""
-
+    user = auth.get_user(request)
+    if user.is_authenticated():
+        first_name = User.objects.get(username=user.username).first_name
+    else:
+        first_name = None
     return {'dropdown_menu': dropdown_menu(), 'menu': menu(),
-            'task': task, 'title': title, 'tab_title': tab_title, 'task_sections': task_sections}
+            'task': task, 'title': title, 'tab_title': tab_title, 'task_sections': task_sections,
+            'username': user.username, 'user_first_name': first_name, 'current_path': path}

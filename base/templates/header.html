@@ -5,22 +5,25 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="практика python, практика django, django на практике, spb-tut, практикум на питоне, практикум на джанго, уроки django, создание сайта на django, создание сайта на python django">
-    <meta name="google-site-verification" content="P_XkRA5MPfm8E23Pk1iatbtZHFo0pVCguKeie_R5MNQ" />
+    <meta name="keywords"
+          content="практика python, практика django, django на практике, spb-tut, практикум на питоне, практикум на джанго, уроки django, создание сайта на django, создание сайта на python django">
+    <meta name="google-site-verification" content="P_XkRA5MPfm8E23Pk1iatbtZHFo0pVCguKeie_R5MNQ"/>
     <meta property="og:image" content="https://pbs.twimg.com/profile_images/646297527189241856/_u8gcu-j_200x200.jpg">
-    <meta name="twitter:site" content="@KeyFire" />
-    <meta name="twitter:image" property="og:image" content="https://pbs.twimg.com/profile_images/646297527189241856/_u8gcu-j_200x200.jpg" />    <link rel="author" href="https://plus.google.com/+MikhailPopovRu">
+    <meta name="twitter:site" content="@KeyFire"/>
+    <meta name="twitter:image" property="og:image"
+          content="https://pbs.twimg.com/profile_images/646297527189241856/_u8gcu-j_200x200.jpg"/>
+    <link rel="author" href="https://plus.google.com/+MikhailPopovRu">
     <link rel="publisher" href="https://plus.google.com/+MikhailPopovRu">
     <link rel="shortcut icon" href="{% static "img/favicon.png" %}" type="image/png">
-    <link href="{%static "highlight/styles/idea.css"%}" rel="stylesheet" media="all"/>
-    <link href="{%static "css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{%static "css/base.css" %}" rel="stylesheet">
-    <link href="{%static "fonts/bitter.css" %}" rel="stylesheet">
-    <link href="{%static "css/font-awesome.min.css" %}" rel="stylesheet">
+    <link href="{% static "highlight/styles/idea.css" %}" rel="stylesheet" media="all"/>
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <link href="{% static "fonts/bitter.css" %}" rel="stylesheet">
+    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet">
     <link href="/feed/" rel="alternate" title="Блог Михаила Попова" type="application/atom+xml">
     <script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
-    <script type="text/javascript" src="{% static "js/jquery.knob.min.js"%}"></script>
-    <script type="text/javascript" src="{% static "js/base.js"%}"></script>
+    <script type="text/javascript" src="{% static "js/jquery.knob.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "js/base.js" %}"></script>
     {% include "yandexmetrics.html" %}
     {% include "googleanalytics.html" %}
     <title>
@@ -30,38 +33,109 @@
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/"><span style="color:red">{% bootstrap_icon "fire" %}</span>&nbsp;&nbsp;Практика Python + Django</a>
-    </div>
-     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
-    <ul class="nav navbar-nav navbar-right">
-        <!-- <li><a href="/blog/">БЛОГ</a></li> -->
-        <li><a><span style="color:#0066cc"><i class="fa fa-graduation-cap"></i></span>&nbsp;&nbsp;<span class="spanlink" onclick="GoTo('_glopages.ru/affiliate/5952159')">Школа Python + Django<span class="hidden-xs hidden-sm"> на spb-tut.ru</span></span></a></li>
-        <li><a href="/feed/" data-toggle="menu-tooltip" data-placement="bottom" title="RSS лента"><img alt="RSS лента" src="{% static "rss.svg" %}" style="height:16px; width:16px"/></a></li>
-        <li class="dropdown visible-xs visible-sm">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Выполнение<span class="caret"></span></a>
-          {{ dropdown_menu|safe }}
-        </li>
-        <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Войти<span class="caret"></span></a>
-        <ul class="dropdown-menu">
-        <li><a href="{% provider_login_url "facebook" method="oauth2" next="/" %}"><i style="color:#3b5998;" class="fa fa-facebook-square fa-lg"></i> Facebook</a></li>
-        <li><a href="{% provider_login_url "google" method="oauth2" next="/" %}"><i style="color:#dd4b39;" class="fa fa-google-plus-square fa-lg"></i> Google+</a></li>
-        <li><a href="{% provider_login_url "twitter" method="oauth2" next="/" %}"><i style="color:#00aced;" class="fa fa-twitter-square fa-lg"></i> Twitter</a></li>
-        <li><a href="{% provider_login_url "linkedin" method="oauth2" next="/" %}"><i style="color:#007bb5;" class="fa fa-linkedin-square fa-lg"></i> LinkedIn</a></li>
-        <li><a href="{% provider_login_url "vk" method="oauth2" next="/" %}"><i style="color:#45668e;" class="fa fa-vk fa-lg"></i> ВКонтакте</a></li>
-        </ul></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><span style="color:red">{% bootstrap_icon "fire" %}</span>&nbsp;&nbsp;Практика
+                Python + Django</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <!-- <li><a href="/blog/">БЛОГ</a></li> -->
+                <li><a style="color:#0066cc" href="http://glopages.ru/affiliate/5952159"><span style="color:#0066cc"><i
+                        class="fa fa-graduation-cap"></i></span>&nbsp;&nbsp;Школа Python + Django<span
+                        class="hidden-xs hidden-sm"> на spb-tut.ru</span></a></li>
+                <!-- <li><a href="/feed/" data-toggle="menu-tooltip" data-placement="bottom" title="RSS лента"><img alt="RSS лента" src="{% static "rss.svg" %}" style="height:16px; width:16px"/></a></li> -->
+                <li class="dropdown visible-xs visible-sm">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Выполнение<span class="caret"></span></a>
+                    {{ dropdown_menu|safe }}
+                </li>
+                {% if username %}
+                    <li><a href="/auth/signout/?next={{ current_path|urlencode:"" }}" data-toggle="menu-tooltip"
+                           data-placement="bottom" title="Выйти">{{ user_first_name }}&nbsp;&nbsp;<i
+                            class="fa fa-sign-out fa-lg"></i></a></li>
+                {% else %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Войти<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{% provider_login_url "facebook" method="oauth2" %}?next={{ current_path|urlencode:"" }}"><i
+                                        style="color:#3b5998;" class="fa fa-facebook-square fa-lg"></i>&nbsp;&nbsp;Facebook</a>
+                            </li>
+                            <li>
+                                <a href="{% provider_login_url "google" method="oauth2" %}&next={{ current_path|urlencode:"" }}"><i
+                                        style="color:#dd4b39;" class="fa fa-google-plus-square fa-lg"></i>&nbsp;&nbsp;Google+</a>
+                            </li>
+                            <li>
+                                <a href="{% provider_login_url "twitter" method="oauth2" %}&next={{ current_path|urlencode:"" }}"><i
+                                        style="color:#00aced;" class="fa fa-twitter-square fa-lg"></i>&nbsp;&nbsp;Twitter</a>
+                            </li>
+                            <li>
+                                <a href="{% provider_login_url "linkedin" method="oauth2" %}&next={{ current_path|urlencode:"" }}"><i
+                                        style="color:#007bb5;" class="fa fa-linkedin-square fa-lg"></i>&nbsp;&nbsp;LinkedIn</a>
+                            </li>
+                            <li>
+                                <a href="{% provider_login_url "vk" method="oauth2" %}&next={{ current_path|urlencode:"" }}"><i
+                                        style="color:#45668e;" class="fa fa-vk fa-lg"></i>&nbsp;&nbsp;ВКонтакте</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#" data-toggle="modal" data-target="#signin"><i
+                                    class="fa fa-sign-in fa-lg"></i>&nbsp;&nbsp;Логин, пароль</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
 </nav>
-<script>$(function () {$('[data-toggle="menu-tooltip"]').tooltip()})</script>
+<!-- Modal -->
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="signinLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="signinLabel">Вход</h4>
+            </div>
+            <div class="modal-body">
+                             {% if login_error %}
+                            <div class="alert alert-danger" role="alert">
+                                <label class="error">{{ login_error }}</label>
+                            </div>
+                            {% endif %}               <form action="/auth/signin/" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label class="control-label" for="username">Имя пользователя</label>
+                        <input class="form-control" type="text" name="username" id="username">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="password">Пароль</label>
+                        <input class="form-control" type="password" name="password" id="password">
+                    </div>
+                    <div class="form-group" hidden>
+                        <input class="form-control" name="next" id="next" value="{{ current_path }}">
+                    </div>
+
+                    <div class="form-group">
+                        <button align="right" class="btn btn-primary" type="submit"><i class='fa fa-sign-in fa-lg'></i>&nbsp;&nbsp;Войти
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<script>$(function () {
+    $('[data-toggle="menu-tooltip"]').tooltip()
+})</script>

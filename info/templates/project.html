@@ -9,8 +9,10 @@
 <h4>Если вам нравится, то, что я делаю, можете меня поддержать</h4>
 <iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/shop.xml?account=41001267446353&quickpay=shop&payment-type-choice=on&writer=seller&targets=%D0%AF+%D0%BF%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B8%D0%B2%D0%B0%D1%8E+%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82+%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D0%B0+Python+%2B+Django&default-sum=&button-text=04&successURL=" width="450" height="213"></iframe>
 </td>
-<td valign="top" align="center" width="30%"><h4>Пройдено уроков: {{ finished }} из {{ total }}</h4>
-    <input type="text" value="{{ progress }}" class="dial" data-readOnly="true" data-linecap="round">
+<td valign="top" align="center" width="30%"><h4>План №1: {{ plan1.finished|floatformat }} из {{ plan1.total }}</h4>
+    <input type="text" value="{{ plan1.progress }}" class="dial" data-readOnly="true" data-linecap="round" data-width="150">
+<h4>План №3: {{ plan3.finished|floatformat }} из {{ plan3.total }}</h4>
+    <input type="text" value="{{ plan3.progress }}" class="dial" data-readOnly="true" data-linecap="round" data-width="150">
 <script>$(function() {$(".dial").knob({'format' : function (v){return v + '%'}});});
 </script></td></tr></table>
 </div>
