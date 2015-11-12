@@ -4,7 +4,7 @@
     {% load bootstrap3 %}
     {% if login_error %}
     <div class="alert alert-danger" role="alert">
-    {{ login_error }}
+    <i class="fa fa-exclamation-circle"></i> {{ login_error }}
     </div>
     {% endif %}
     <form action="/auth/signin/" method="post">

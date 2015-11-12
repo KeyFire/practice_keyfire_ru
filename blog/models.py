@@ -39,7 +39,7 @@ class Article(Record):
     objects = ArticleQuerySet.as_manager() # Используется для выборки только опубликованных статей
 
     def get_absolute_url(self):
-        return '/blog/%s' % self.slug
+        return '/blog/%s/' % self.slug
 
 
 

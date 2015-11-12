@@ -11,11 +11,12 @@ def all_articles(request):
 
 def one_article(request, art_id):
     article = get_object_or_404(Article, pk=art_id)
-    return render(request, 'post.html', {'article': article}, context_instance=RequestContext(request))
+    return render(request, 'post.html', {'object': article, 'tab_title': article.title},
+                  context_instance=RequestContext(request))
 
 
 def one_article_by_slug(request, slug):
     article = get_object_or_404(Article, slug=slug)
-    return render(request, 'post.html', {'article': article, 'tab_title': article.title},
+    return render(request, 'post.html', {'object': article, 'tab_title': article.title},
                   context_instance=RequestContext(request))
 

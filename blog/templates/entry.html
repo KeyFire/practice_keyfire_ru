@@ -1,11 +1,26 @@
 {% extends 'main.html' %}
 {% block content %}
-{% load bootstrap3 %}
-<div><table>
-{% for object in articles %}
-    <tr><td><div class="post"><p><h3><a href="{% url 'blog:one_article_by_slug' object.slug %}">{{ object.title }}</a></h3>
-    <small>Автор: <ins>Михаил Попов</ins> / <i class="fa fa-calendar-o"></i> <ins>{{ object.add_date|date:"d.m.Y" }}</ins> <i class="fa fa-clock-o"></i> <ins>{{ object.add_date|time:"H:i" }}</ins> / <i class="fa fa-tags"></i> <ins>{{ object.tags.all|join:", " }}</ins></small></p>
-    {{ object.subtitle|safe }} <a class="btn btn-default btn-xs" type="button" href="{% url 'blog:one_article_by_slug' object.slug %}">Читать полностью <i class="fa fa-angle-double-right"></i></a></div></td></tr>
-{% endfor %}
-</table></div>
+    {% load bootstrap3 %}
+    {% load disqus_tags %}
+    <div>
+        <table>
+        {% for object in articles %}
+            <tr><td>
+                <div class="post"><p>
+                    <h3><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></h3>
+                    <small><i class="fa fa-user" title="Автор"></i> Михаил Попов&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-calendar-o" title="Дата публикации"></i> {{ object.add_date|date:"d.m.Y" }}
+                        <i class="fa fa-clock-o" title="Время публикации"></i> {{ object.add_date|time:"H:i" }}&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-tags" title="Тэги"></i> {{ object.tags.all|join:", " }}&nbsp;&nbsp;&nbsp;
+                        <i class="fa fa-comments-o" title="Комментарии"></i>
+                        <a href="{{ object.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ object.get_absolute_url }}" >нет комментариев</a></small>
+                    </p>
+                    {{ object.subtitle|safe }}
+                    <a class="btn btn-default btn-xs" type="button" href="{{ object.get_absolute_url }}">Читать полностью
+                        <i class="fa fa-angle-double-right"></i></a></div>
+            </td></tr>
+        {% endfor %}
+        </table>
+    {% disqus_num_replies %}
+    </div>
 {% endblock %}

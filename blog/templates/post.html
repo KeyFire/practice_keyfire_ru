@@ -1,12 +1,24 @@
 {% extends 'main.html' %}
 {% block content %}
+{% load disqus_tags %}
     <div>
-        <p><h3>{{ article.title }}</h3>
-    <small>Автор: <ins>Михаил Попов</ins> / <i class="fa fa-calendar-o"></i> <ins>{{ article.add_date|date:"d.m.Y" }}</ins> <i class="fa fa-clock-o"></i> <ins>{{ article.add_date|time:"H:i" }}</ins> / <i class="fa fa-tags"></i> <ins>{{ article.tags.all|join:", " }}</ins></small></p>
-        {{ article.body|safe }}
-    <p>
-    {% include "social.html" %}
-    </p>
-        <br></div>
+        <p>
+
+        <h3>{{ object.title }}</h3>
+        <small><i class="fa fa-user" title="Автор"></i> Михаил Попов&nbsp;&nbsp;&nbsp;
+            <i class="fa fa-calendar-o" title="Дата публикации"></i> {{ object.add_date|date:"d.m.Y" }}
+            <i class="fa fa-clock-o" title="Время публикации"></i> {{ object.add_date|time:"H:i" }}&nbsp;&nbsp;&nbsp;
+            <i class="fa fa-tags" title="Тэги"></i> {{ object.tags.all|join:", " }}&nbsp;&nbsp;&nbsp;
+            <i class="fa fa-comments-o" title="Комментарии"></i>
+            <a href="{{ object.get_absolute_url }}#disqus_thread" data-disqus-identifier="{{ object.get_absolute_url }}">нет комментариев</a></small>
+        </p>
+        {{ object.body|safe }}
+        {% disqus_num_replies %}
+        <p>
+            {% include "social.html" %}
+        </p>
+        <br>
+    </div>
+
     {% include "disqus.html" %}
 {% endblock %}

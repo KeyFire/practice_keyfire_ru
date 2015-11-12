@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_markdown',
     'debug_toolbar',
-
+    'disqus',
     'mptt',
     'ckeditor',
     'ckeditor_uploader',
@@ -208,3 +208,6 @@ SOCIALACCOUNT_PROVIDERS = \
 ACCOUNT_LOGIN_REDIRECT_URL = '/'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+DISQUS_API_KEY = local_settings.DISQUS_API_KEY
+DISQUS_WEBSITE_SHORTNAME = 'djangopractice'

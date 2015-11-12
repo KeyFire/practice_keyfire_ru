@@ -19,7 +19,7 @@ def sign_in(request):
             auth.login(request, user)
             return redirect(request.POST.get('next', '/'))
         else:
-            args['login_error'] = 'Пользователь не найден'
+            args['login_error'] = 'Имя пользователя или пароль указаны неверно'
             return render_to_response('login.html', args,
                                       context_instance=RequestContext(request))
     else:
