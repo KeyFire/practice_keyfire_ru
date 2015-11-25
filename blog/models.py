@@ -35,6 +35,8 @@ class Article(Record):
     body = RichTextUploadingField(verbose_name="Текст статьи", blank=True)
     slug = models.CharField(verbose_name='Транслит', max_length=200, blank=True, unique=True) # ссылки не должны повторяться
     tags = models.ManyToManyField(Tag, verbose_name='Тэги')
+    likes = models.IntegerField(verbose_name='Нравится', default=0)
+    dislikes = models.IntegerField(verbose_name='Не нравится', default=0)
 
     objects = ArticleQuerySet.as_manager() # Используется для выборки только опубликованных статей
 
