@@ -17,8 +17,8 @@ def articles_by_tag(request, slug):
 
 
     return render_to_response('entry.html', {'articles': articles,
-                                             'tab_title': u'Статьи по рубрике - {0}'.format(tag.title),
-                                             'title': u'Статьи по рубрике - {0}'.format(tag.title)},
+                                             'tab_title': u'Статьи по рубрике: {0}'.format(tag.title),
+                                             'title': u'Статьи по рубрике: {0}'.format(tag.title)},
                               context_instance=RequestContext(request))
 
 

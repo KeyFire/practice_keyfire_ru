@@ -7,7 +7,7 @@
         <small><i class="fa fa-user" title="Автор"></i> Михаил Попов&nbsp;&nbsp;&nbsp;
             <i class="fa fa-calendar-o" title="Дата публикации"></i> {{ object.add_date|date:"d.m.Y" }}
             <i class="fa fa-clock-o" title="Время публикации"></i> {{ object.add_date|time:"H:i" }}&nbsp;&nbsp;&nbsp;
-            <i class="fa fa-tags" title="Тэги">
+            <i class="fa fa-tags" title="Тэги"></i>
             {%  for tag in object.tags.all %}
                 <a href="/blog/tags/{{ tag.slug }}/">{{ tag }}</a> {% if object.tags.last != tag %}, {% endif %}
             {% endfor %} &nbsp;&nbsp;&nbsp;

@@ -194,17 +194,6 @@ CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.j
 CKEDITOR_IMAGE_BACKEND = "pillow"  # обрабатывать изображения при помощи pillow
 # End ckeditor
 
-SOCIALACCOUNT_PROVIDERS = \
-    {'linkedin':
-      {'SCOPE': ['r_emailaddress'],
-       'PROFILE_FIELDS': ['id',
-                         'first-name',
-                         'last-name',
-                         'email-address',
-                         'picture-url',
-                         'public-profile-url']}
-     }
-
 ACCOUNT_LOGIN_REDIRECT_URL = '/'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
