@@ -16,6 +16,21 @@
                data-disqus-identifier="{{ object.get_absolute_url }}">нет комментариев</a></small>
         </p>
         {{ object.body|safe }}
+        <p><table width="100%">
+            <tr>
+
+                <td width="50%">
+                    {% if prev_article.count == 1 %}
+                    <a href="{{ prev_article.first.get_absolute_url }}" data-toggle="tooltip" data-placement="bottom"
+                       title="{{ prev_article.first.description|striptags }}"><i class="fa fa-angle-double-left"></i> {{ prev_article.first.title }}</a>
+                    {% endif %}</td>
+                <td width="50%" align="right">
+                    {% if next_article.count == 1 %}
+                    <a href="{{ next_article.first.get_absolute_url }}" data-toggle="tooltip" data-placement="bottom"
+                       title="{{ next_article.first.description|striptags }}">{{ next_article.first.title }} <i class="fa fa-angle-double-right"></i></a>
+                    {% endif %}</td>
+            </tr>
+        </table></p>
         {% disqus_num_replies %}
         <table width="100%">
             <tr>

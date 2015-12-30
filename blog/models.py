@@ -6,6 +6,10 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Tag(models.Model):
+    class Meta:
+        verbose_name = 'раздел'
+        verbose_name_plural = 'Разделы'
+
     title = models.CharField(verbose_name="Имя", max_length=200, unique=True)
     slug = models.SlugField(verbose_name='Транслит', max_length=200, unique=True)
 
@@ -30,10 +34,10 @@ class Article(Record):
         verbose_name_plural = 'Статьи блога'
 
     publish = models.BooleanField(verbose_name='Публиковать', default=True)
-    subtitle = RichTextUploadingField(verbose_name="Анонс статьи", blank=True)
-    description = RichTextUploadingField(verbose_name="Описание для RSS", blank=True)
     body = RichTextUploadingField(verbose_name="Текст статьи", blank=True)
-    slug = models.CharField(verbose_name='Транслит', max_length=200, blank=True, unique=True) # ссылки не должны повторяться
+    subtitle = RichTextUploadingField(verbose_name="Анонс статьи", blank=True)
+    description = models.TextField(verbose_name="Описание для RSS", blank=True)
+    slug = models.CharField(verbose_name='Транслит', max_length=200, blank=True, unique=True)  # ссылки не должны повторяться
     tags = models.ManyToManyField(Tag, verbose_name='Тэги')
     likes = models.IntegerField(verbose_name='Нравится', default=0)
     dislikes = models.IntegerField(verbose_name='Не нравится', default=0)

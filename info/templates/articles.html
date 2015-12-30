@@ -1,5 +1,11 @@
 {% extends 'main.html' %}
 {% block content %}
+<div class="alert alert-warning" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Внимание!</span>
+  Это не настоящие статьи, а лишь пример работы с базой данных. Настоящие статьи находятся в <a href="/blog/pages/1">
+    моем блоге</a>.
+</div>
 {% for article in articles %}
     <div><h3>{{ article.title }} <small>{{ article.date|date:"d.m.Y" }} {{ article.date|time:"H:i" }}</small></h3>
     {{ article.description }}</div>
