@@ -1,6 +1,6 @@
 # coding: utf-8
 from django.contrib import admin
-from models import Article, Tag
+from models import Article, Tag, UserLikes
 
 
 class ArticleAdmin(admin.ModelAdmin):
@@ -12,6 +12,10 @@ class TagAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug')
     prepopulated_fields = {"slug": ("title",)}
 
+class UserLikesAdmin(admin.ModelAdmin):
+    list_display = ('user', 'article', 'like', 'dislike')
+
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(UserLikes, UserLikesAdmin)
 

@@ -1,12 +1,13 @@
 # coding: utf-8
 from django.db import models
 from base.models import Record
-from uuslug import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.conf import settings
 
 
 class Tag(models.Model):
     class Meta:
+        ordering = ['title']
         verbose_name = 'раздел'
         verbose_name_plural = 'Разделы'
 
@@ -15,10 +16,6 @@ class Tag(models.Model):
 
     def __unicode__(self):
         return self.title
-
-#    def save(self):
-#        self.slug = slugify(self.title)
-#        super(Tag, self).save()
 
 
 class ArticleQuerySet(models.QuerySet):
@@ -47,5 +44,15 @@ class Article(Record):
     def get_absolute_url(self):
         return '/blog/%s/' % self.slug
 
+class UserLikes(models.Model):
+    class Meta:
+        db_table = 'app_blog_user_likes'
+        verbose_name = 'оценку пользователя'
+        verbose_name_plural = 'Оценки пользователей'
+    UserModel = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
+    user = models.ForeignKey(UserModel, verbose_name="Пользователь")
+    article = models.ForeignKey(Article, verbose_name="Статья")
+    like = models.BooleanField(verbose_name="Нравится", default=False)
+    dislike = models.BooleanField(verbose_name="Не нравится", default=False)
 
 

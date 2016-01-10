@@ -24,29 +24,10 @@
     <script type="text/javascript" src="{% bootstrap_jquery_url %}"></script>
     <script type="text/javascript" src="{% static "js/jquery.knob.min.js" %}"></script>
     <script type="text/javascript" src="{% static "js/base.js" %}"></script>
-    {% include "yandexmetrics.html" %}
-    {% include "googleanalytics.html" %}
     <title>
         {% if title != None or tab_title != "" %}
             {% if tab_title == "" %}{{ title }}{% else %}{{ tab_title }}{% endif %} -
         {% endif %} Практика Python + Django</title>
-	<script type="text/javascript">
-	 imageDir = "http://mvcreative.ru/example/6/2/snow/";
-	 sflakesMax = 65;
-	 sflakesMaxActive = 65;
-	 svMaxX = 2;
-	 svMaxY = 6;
-	 ssnowStick = 1;
-	 ssnowCollect = 0;
-	 sfollowMouse = 1;
-	 sflakeBottom = 0;
-	 susePNG = 1;
-	 sflakeTypes = 5;
-	 sflakeWidth = 15;
-	 sflakeHeight = 15;
-	</script>
-	<script type="text/javascript" src="http://mvcreative.ru/example/6/2/snow.js"></script>
-
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -143,8 +124,8 @@
                     </div>
 
                     <div class="form-group">
-                        <button align="right" class="btn btn-primary" type="submit"><i class='fa fa-sign-in fa-lg'></i>&nbsp;&nbsp;Войти
-                        </button>
+                        <button align="right" class="btn btn-primary" type="submit"><i class='fa fa-sign-in fa-lg'></i>&nbsp;&nbsp;Войти</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="/accounts/signup/" align="left">Регистрация</a>
                     </div>
                 </form>
             </div>

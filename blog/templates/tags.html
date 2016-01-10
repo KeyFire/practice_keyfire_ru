@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block content %}
+    {% load bootstrap3 %}
+    <div>
+        <ul>
+        {% for object in objects %}
+            <li><a href="/blog/tags/{{ object.tag.slug }}/">{{ object.tag.title }} ({{ object.count }})</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
