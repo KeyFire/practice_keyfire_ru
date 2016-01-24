@@ -4,7 +4,7 @@ from models import Article, Tag, UserLikes
 
 
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('title', 'publish', 'add_date', 'slug')
+    list_display = ('title', 'publish', 'add_date', 'slug', 'likes', 'dislikes')
     prepopulated_fields = {"slug": ("title",)}
 
 

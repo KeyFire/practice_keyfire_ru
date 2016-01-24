@@ -38,13 +38,27 @@
         <table width="100%">
             <tr>
                 <td width="50%">
-                    <a href="{{ object.get_absolute_url }}addlike/"><i
-                            style="color:#449d44" class="fa fa-thumbs-o-up fa-2x"></i></a> <span
-                        class="lead">{{ object.likes }}</span>
-                    &nbsp;&nbsp;&nbsp;
-                    <a href="{{ object.get_absolute_url }}adddislike/"><i
-                            style="color:#942a25" class="fa fa-thumbs-o-up fa-2x fa-rotate-180"></i></a> <span
-                        class="lead">{{ object.dislikes }}</span></td>
+                    {% if username %}
+                        <a href="{{ object.get_absolute_url }}addlike/"><i
+                                style="color:#449d44" class="fa fa-thumbs-o-up fa-2x"></i></a> <span
+                            class="lead">{{ object.likes }}</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <a href="{{ object.get_absolute_url }}adddislike/"><i
+                                style="color:#942a25" class="fa fa-thumbs-o-up fa-2x fa-rotate-180"></i></a> <span
+                            class="lead">{{ object.dislikes }}</span></td>
+                    {% else %}
+                        <i style="color:#777" class="fa fa-thumbs-o-up fa-2x" data-toggle="thumbs-up-tooltip" data-placement="bottom"
+                       title="Войдите, чтобы поставить оценку."></i > <span
+                            class="lead">{{ object.likes }}</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <i style="color:#777" class="fa fa-thumbs-o-up fa-2x fa-rotate-180" data-toggle="thumbs-up-tooltip" data-placement="bottom"
+                       title="Войдите, чтобы поставить оценку."></i> <span
+                            class="lead">{{ object.dislikes }}</span></td>
+                        <script>$(function () {
+                            $('[data-toggle="thumbs-up-tooltip"]').tooltip()
+                        })</script>
+
+                    {% endif %}
                 <td width="50%">{% include "social.html" %}</td>
             </tr>
         </table>

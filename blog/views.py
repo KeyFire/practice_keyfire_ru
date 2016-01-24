@@ -56,18 +56,8 @@ def add_like(request, slug):
             if user_likes.count() == 0:
                 article.likes += 1
                 article.save()
-                UserLikes(user=user, article=article, like=True).save();
-            return redirect('/blog/%s/' % article.slug)
-        else:
-            rated = request.COOKIES.get(slug+"#like");
-            if rated != None:
-                return redirect('/blog/%s/' % article.slug)
-            else:
-                article.likes += 1
-                article.save()
-                response = redirect('/blog/%s/' % article.slug)
-                response.set_cookie(slug+"#like", 1)
-                return response
+                UserLikes(user=user, article=article, like=True).save()
+        return redirect('/blog/%s/' % article.slug)
     except ObjectDoesNotExist:
         return Http404
 
@@ -81,18 +71,8 @@ def add_dislike(request, slug):
             if user_likes.count() == 0:
                 article.dislikes += 1
                 article.save()
-                UserLikes(user=user, article=article, dislike=True).save();
-            return redirect('/blog/%s/' % article.slug)
-        else:
-            rated = request.COOKIES.get(slug+"#dislike");
-            if rated != None:
-                return redirect('/blog/%s/' % article.slug)
-            else:
-                article.dislikes += 1
-                article.save()
-                response = redirect('/blog/%s/' % article.slug)
-                response.set_cookie(slug+"#dislike", 1)
-                return response
+                UserLikes(user=user, article=article, dislike=True).save()
+        return redirect('/blog/%s/' % article.slug)
     except ObjectDoesNotExist:
         return Http404
 
