@@ -24,11 +24,13 @@ urlpatterns = [
     url(r'^auth/', include('loginsite.urls', namespace='auth')),
 ]
 
+"""
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns += patterns('',
         url(r'^__debug__/', include(debug_toolbar.urls)),
     )
+"""
 
 urlpatterns += patterns('',
         url(r'^ckeditor/', include('ckeditor_uploader.urls')),

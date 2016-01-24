@@ -5,7 +5,8 @@
 <div id="carousel-generic" class="carousel slide" data-ride="carousel" data-interval="20000">
   <ol class="carousel-indicators">
   {% for visual in visuals %}
-    <li data-target="#carousel-generic" data-slide-to="{{ visual.index }}" {% ifequal visual.index 0 %}class="active"{% endifequal %}></li>
+    <li data-target="#carousel-generic" data-slide-to="{{ visual.index }}"
+        {% ifequal visual.index 0 %}class="active"{% endifequal %}></li>
   {% endfor %}
   </ol>
   <div class="carousel-inner" role="listbox">

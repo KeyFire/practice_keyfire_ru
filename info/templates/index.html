@@ -2,24 +2,67 @@
 {% block content %}
 {% load bootstrap3 %}
 {% load staticfiles %}
- <style>
- .jumbotron {
-     background-image: url("{%static "img/splash-django-blur.png" %}");
-     background-position: center, center; background-repeat: no-repeat;
-     background-color: #fffffe;
- }
- </style>
- <div class="jumbotron">
-  <div align="center">
-   <div class="container">
-    <h1>Сделай Сам Свой Сайт!</h1>
-    <h3>Используй инструменты <span style="color:red">Я</span>ндекс и Mail.ru</h3>
-    <h2><strong>Жми</strong> быстрее на кнопку</h2>
-    <p>и пройди обучение</p>
-    <p></p>
-    <h1>{% bootstrap_icon "arrow-down" %}</h1>
-    <p>{% bootstrap_button "Начать обучение в школе<br>(скидка только по этой ссылке)" button_class="btn-danger btn-lg" href="http://glopages.ru/affiliate/5952159" %}</p>
+    <br>
+<div id="carousel-generic" class="carousel slide" data-ride="carousel" data-interval="20000">
+  <ol class="carousel-indicators">
+
+    <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
+
+    <li data-target="#carousel-generic" data-slide-to="1"></li>
+
+    <li data-target="#carousel-generic" data-slide-to="2"></li>
+
+  </ol>
+  <div class="carousel-inner" role="listbox">
+
+    <div class="item active" style="background-color:#000;">
+      <img style="opacity:0.6; -moz-opacity:0.6; -khtml-opacity: 0.6; -webkit-filter: blur(3px); filter: blur(3px); -webkit-transition: 1s -webkit-filter linear; transition: 1s filter linear;" src="/static/img/django-horse.png" alt="Django">
+      <div class="carousel-caption">
+        <h1>Сделай Сам Свой Сайт!</h1>
+        <h3>Используй инструменты <span style="color:red">Я</span>ндекс и Mail.ru</h3>
+        <h2><strong>Жми</strong> быстрее на кнопку</h2>
+        <p>и пройди обучение</p>
+        <p></p>
+        <h1>{% bootstrap_icon "arrow-down" %}</h1>
+        <p>{% bootstrap_button "Начать обучение в школе<br>(скидка только по этой ссылке)" button_class="btn-danger btn-lg" href="http://glopages.ru/affiliate/5952159" %}</p>
+      </div>
+    </div>
+
+    <div class="item" style="background-color:#000;">
+      <img style="opacity:0.6; -moz-opacity:0.6; -khtml-opacity: 0.6; -webkit-filter: blur(3px); filter: blur(3px); -webkit-transition: 1s -webkit-filter linear; transition: 1s filter linear;" src="/static/img/android-robot.jpg" alt="Android">
+      <div class="carousel-caption">
+        <h1>Напиши свое приложение на Android!</h1>
+        <h3>Исопльзуй простоту Python для мобильных приложений.</h3>
+        <h2><strong>Жми</strong> быстрее на кнопку</h2>
+        <p>и пройди обучение</p>
+        <p></p>
+        <h1>{% bootstrap_icon "arrow-down" %}</h1>
+        <p>{% bootstrap_button "Начать обучение в школе<br>(скидка только по этой ссылке)" button_class="btn-success btn-lg" href="http://glopages.ru/affiliate/6193578" %}</p>
+      </div>
+    </div>
+
+    <div class="item" style="background-color:#000;">
+      <img style="opacity:0.6; -moz-opacity:0.6; -khtml-opacity: 0.6; -webkit-filter: blur(3px); filter: blur(3px); -webkit-transition: 1s -webkit-filter linear; transition: 1s filter linear;" src="/static/img/money-gain.jpg" alt="Django">
+      <div class="carousel-caption">
+        <h1>Научись продавать, что делаешь!</h1>
+        <h3>Начни с первого дня получать прибыль.</h3>
+        <h2><strong>Жми</strong> быстрее на кнопку</h2>
+        <p>и пройди обучение</p>
+        <p></p>
+        <h1>{% bootstrap_icon "arrow-down" %}</h1>
+        <p>{% bootstrap_button "Начать обучение в школе<br>(скидка только по этой ссылке)" button_class="btn-warning btn-lg" href="http://glopages.ru/affiliate/6265620" %}</p>
+      </div>
    </div>
+
   </div>
- </div>
+
+  <a class="left carousel-control" href="#carousel-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Сюда</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Туда</span>
+  </a>
+</div>
 {% endblock %}

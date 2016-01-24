@@ -13,7 +13,7 @@ SECRET_KEY = local_settings.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = local_settings.DEBUG
-DEBUG_TOOLBAR_PATCH_SETTINGS = False
+#DEBUG_TOOLBAR_PATCH_SETTINGS = False
 INTERNAL_IPS = local_settings.INTERNAL_IPS
 ALLOWED_HOSTS = local_settings.ALLOWED_HOSTS
 
@@ -37,7 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_markdown',
-    'debug_toolbar',
+    #'debug_toolbar',
     'disqus',
     'mptt',
     'ckeditor',
@@ -63,9 +63,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
-
+"""
 DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.versions.VersionsPanel',
     'debug_toolbar.panels.timer.TimerPanel',
@@ -80,6 +80,7 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
+"""
 
 ROOT_URLCONF = 'practice_keyfire_ru.urls' # Поиск ссылок начинается с этого файла.
 
